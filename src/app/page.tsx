@@ -1,64 +1,59 @@
-import Image from "next/image";
+import Link from "next/link";
+import { TrendingUp, Wallet, BarChart3 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-slate-100">
+      <main className="space-y-16 py-12">
+        {/* Hero Section */}
+        <section className="text-center space-y-6">
+          <div className="space-y-2">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+              Gestiona tus Finanzas
+              <span className="block text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-blue-600">de forma simple</span>
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Una herramienta minimalista para controlar tus ingresos, gastos y alcanzar tus metas financieras.</p>
+          </div>
+
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Link href="/dashboard" className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors shadow-md hover:shadow-lg">
+              Ir al Dashboard
+            </Link>
+            <Link href="/transactions/new" className="px-8 py-3 border border-gray-300 text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-colors">
+              Nueva Transacción
+            </Link>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <Wallet className="w-8 h-8 text-emerald-600 mb-3" />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Transacciones</h3>
+            <p className="text-gray-600 text-sm">Registra y controla todos tus movimientos financieros en un solo lugar.</p>
+          </div>
+
+          <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <BarChart3 className="w-8 h-8 text-blue-600 mb-3" />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Análisis</h3>
+            <p className="text-gray-600 text-sm">Visualiza gráficos detallados sobre tus patrones de gasto e ingresos.</p>
+          </div>
+
+          <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <TrendingUp className="w-8 h-8 text-amber-600 mb-3" />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Categorías</h3>
+            <p className="text-gray-600 text-sm">Organiza tus gastos por categorías personalizadas para mejor control.</p>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 text-center max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">¿Listo para comenzar?</h2>
+          <p className="text-gray-600 mb-6">Comienza a rastrear tu dinero hoy y toma mejores decisiones financieras.</p>
+          <Link href="/dashboard" className="inline-block px-8 py-3 bg-linear-to-r from-emerald-600 to-blue-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all">
+            Acceder al Dashboard
+          </Link>
+        </section>
       </main>
     </div>
   );
