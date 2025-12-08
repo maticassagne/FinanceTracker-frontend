@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DateRangePicker } from "@/components/ui/DateRangePicker";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, CartesianGrid, Legend } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, CartesianGrid } from "recharts";
 import { api } from "../../lib/axios";
 import { TrendingUp, TrendingDown, Wallet } from "lucide-react";
 
@@ -19,11 +19,12 @@ interface CategoryStat {
   category: string;
   total: number;
   type: "income" | "expense";
+  [key: string]: any;
 }
 
 interface DateRange {
-  from?: Date | null;
-  to?: Date | null;
+  from: Date | null;
+  to: Date | null;
 }
 
 const COLORS = ["#10b981", "#ef4444", "#f59e0b", "#3b82f6", "#8b5cf6", "#ec4899"];
@@ -160,7 +161,7 @@ export default function DashboardPage() {
                 <CardContent className="flex justify-center">
                   <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
-                      <Pie data={categories} dataKey="total" nameKey="category" outerRadius={100} label={({ category, percent }) => `${category} ${(percent * 100).toFixed(0)}%`}>
+                      <Pie data={categories} dataKey="total" nameKey="category" outerRadius={100} label={({ category, percent }: any) => `${category} ${((percent as number) * 100).toFixed(0)}%`}>
                         {categories.map((_, index) => (
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
